@@ -20,11 +20,11 @@ on:
       DEVICE_TREE:
         description: 'OrangeFox Device Tree'
         required: true
-        default: 'https://github.com/malkist01/orangefox_device-j6primelte'
+        default: 'https://github.com/ashyx/TWRP_Samsung_j6primelte'
       DEVICE_TREE_BRANCH:
         description: 'OrangeFox Device Tree Branch'
         required: true
-        default: 'fox_9.0'
+        default: 'master'
       DEVICE_PATH:
         description: 'Specify your Device Path'
         required: true
