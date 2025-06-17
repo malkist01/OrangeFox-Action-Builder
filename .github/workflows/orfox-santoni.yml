@@ -20,11 +20,11 @@ on:
       DEVICE_TREE:
         description: 'OrangeFox Device Tree'
         required: true
-        default: 'https://github.com/Jabiyeff/device-santoni-twrp.git'
+        default: 'https://github.com/TeamWin/android_device_xiaomi_santoni'
       DEVICE_TREE_BRANCH:
         description: 'OrangeFox Device Tree Branch'
         required: true
-        default: 'ofrp'
+        default: 'android-9.0'
       DEVICE_PATH:
         description: 'Specify your Device Path'
         required: true
