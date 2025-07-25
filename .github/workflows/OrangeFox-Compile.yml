@@ -93,6 +93,7 @@ jobs:
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
         set +e
         source build/envsetup.sh
+        export TZ=Asia/Jakarta
         export EXTRA_CMD="export OF_MAINTAINER=Teletubies 🕊️"
         export OF_USE_LATEST_MAGISK=true
         export ALLOW_MISSING_DEPENDENCIES=true
