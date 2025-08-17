@@ -12,9 +12,10 @@ on:
       MANIFEST_BRANCH:
         description: 'OrangeFox Manifest Branch'
         required: true
-        default: '12.1'
+        default: '14.1'
         type: choice
         options:
+        - 14.1
         - 12.1
         - 11.0
       DEVICE_TREE:
@@ -96,6 +97,7 @@ jobs:
         export TZ=Asia/Jakarta
         export EXTRA_CMD="export OF_MAINTAINER=Teletubies 🕊️"
         export OF_USE_LATEST_MAGISK=true
+        export OF_MAINTAINER=Teletylubies 🕊️
         export ALLOW_MISSING_DEPENDENCIES=true
         set -e
         lunch twrp_${{ inputs.DEVICE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image
