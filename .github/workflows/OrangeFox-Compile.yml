@@ -95,9 +95,9 @@ jobs:
         set +e
         source build/envsetup.sh
         export TZ=Asia/Jakarta
-        export EXTRA_CMD="export OF_MAINTAINER=Teletubies 🕊️"
+        export EXTRA_CMD="export OF_MAINTAINER=Teletubies"
         export OF_USE_LATEST_MAGISK=true
-        export OF_MAINTAINER=Teletylubies 🕊️
+        export OF_MAINTAINER=Teletubies
         export ALLOW_MISSING_DEPENDENCIES=true
         set -e
         lunch twrp_${{ inputs.DEVICE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image
