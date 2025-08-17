@@ -15,16 +15,17 @@ on:
         default: '12.1'
         type: choice
         options:
+        - 14.1
         - 12.1
         - 11.0
       DEVICE_TREE:
         description: 'OrangeFox Device Tree'
         required: true
-        default: 'https://github.com/TeamWin/android_device_xiaomi_santoni'
+        default: 'https://gitlab.com/androidsantoni/archive/recovery/santoni/twrp_device_xiaomi_santoni.git'
       DEVICE_TREE_BRANCH:
         description: 'OrangeFox Device Tree Branch'
         required: true
-        default: 'android-9.0'
+        default: 'android-11'
       DEVICE_PATH:
         description: 'Specify your Device Path'
         required: true
@@ -71,7 +72,7 @@ jobs:
         sudo bash setup/android_build_env.sh
       
     - name: Set-up Manifest
-      if: inputs.MANIFEST_BRANCH == '11.0' || inputs.MANIFEST_BRANCH == '12.1'
+      if: inputs.MANIFEST_BRANCH == '11.0' || inputs.MANIFEST_BRANCH == '12.1' || inputs.MANIFEST_BRANCH == '14.1'
       run: |
         mkdir -p ${GITHUB_WORKSPACE}/OrangeFox
         cd ${GITHUB_WORKSPACE}/OrangeFox
@@ -93,13 +94,17 @@ jobs:
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
         set +e
         source build/envsetup.sh
+        export TZ=Asia/Jakarta
+        export EXTRA_CMD="export OF_MAINTAINER=Teletubies 🕊️"
+        export OF_USE_LATEST_MAGISK=true
+        export OF_MAINTAINER=Teletylubies 🕊️
         export ALLOW_MISSING_DEPENDENCIES=true
         set -e
         lunch twrp_${{ inputs.DEVICE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image
 
     - name: Set Release Properties
       run: |
-        echo "BUILD_DATE=$(TZ=Asia/Manila date +%Y%m%d)" >> $GITHUB_ENV
+        echo "BUILD_DATE=$(TZ=Asia/Jakarta date +%Y%m%d)" >> $GITHUB_ENV
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
 
     - name: Upload to Release
